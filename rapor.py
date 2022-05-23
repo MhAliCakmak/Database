@@ -39,7 +39,7 @@ class Admin:
 class Calisan:
     @staticmethod
     def gunlukGeleceKisi():
-        imlec.execute('SELECT rezarvasyonTarihi FROM OnOdemeli WHERE rezarvasyonTarihi<0')
+        imlec.execute('SELECT name FROM OnOdemeli WHERE rezarvasyonTarihi<1')
         res=imlec.fetchall()
         with open("gunlukGeleckKisi.csv","w")as file:
             for row in res:
@@ -47,7 +47,7 @@ class Calisan:
     
     @staticmethod
     def gunlukDoluluk():
-        imlec.execute('SELECT rezarvasyonTarihi,inOtel FROM OnOdemeli WHERE inOtel =1')
+        imlec.execute('SELECT rezarvasyonTarihi FROM OnOdemeli WHERE inOtel=1')
         res=imlec.fetchall()
         with open("gunlukDoluluk.csv","w")as file:
             for row in res:

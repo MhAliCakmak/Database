@@ -46,7 +46,7 @@ class RezervLoginService:
         
         elif secim==3:
             commands = 'INSERT INTO Standart VALUES(?,?,?,?,?,?,?,?)'
-            data = (publicAddress,privateAddress,name,lastname,rezervasyonUcreti,rezervasyonDate,0,0)
+            data = (publicAddress,privateAddress,name,lastname,rezervasyonDate,rezervasyonUcreti,0,0)
             bakiye=card.pay(0)
 
 
@@ -111,7 +111,7 @@ class RezervLoginService:
             rezervs=imlec.fetchall()
             for rezerv in rezervs:
                 if rezerv[1]==pubAddress:
-                    print(f"\n{50*' '}Public Address:{rezerv[1]}\n{50*' '}Name : {rezerv[3]}\n{50*' '}Lastname: {rezerv[4]}\n{50*' '}Rezervasyon Ucreti :{rezerv[5]}\n{50*' '}Rezervasyon KalanGun:{rezerv[6]}\n")
+                    print(f"\n{50*' '}Public Address:{rezerv[1]}\n{50*' '}Name : {rezerv[3]}\n{50*' '}Lastname: {rezerv[4]}\n{50*' '}Rezervasyon Kalan Gun :{rezerv[5]}\n{50*' '}Rezervasyon Ucreti:{rezerv[6]}\n")
                     if rezerv[6]<3:
                         privAdd=input("Private Address:")
                         
@@ -156,7 +156,7 @@ class RezervLoginService:
             imlec.execute(commands,data)
             db.commit()
 
-        if typeRezerv==3:
+        elif typeRezerv==3:
             guncelDate=int(input("Gunclenecek tarih:"))
             command1=''
             command2 = 'UPDATE Standart SET rezarvasyonTarihi=? WHERE privateAddress = ?'
